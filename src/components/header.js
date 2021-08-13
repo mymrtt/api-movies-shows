@@ -4,27 +4,28 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 // Styles
-const StyledLink = styled(NavLink)`
-  text-decoration: none;
-  color: white;
-`;
-
-const List = styled.li`
-  border: solid 1px #fff;
-  width: 100px;
-  height: 30px;
-  text-align: center;
-  padding-top: 0.25rem;
-  border-radius: 10%;
-`;
 const Box = styled.div`
+  height: 20vh;
   display: flex;
   justify-content: space-evenly;
-  height: 20vh;
   align-items: center;
   background-color: black;
-  li {
-    list-style: none;
+`;
+
+const StyledLink = styled(NavLink)`
+  text-decoration: none;
+  padding-top: 0.25rem;
+  width: 6.25rem;
+  height: 1.875rem;
+  text-align: center;
+  color: #fff;
+  border: solid 1px #fff;
+  border-radius: 10%;
+  list-style: none;
+
+  &.active, :hover {
+    color: #000;
+    background-color: #fff;
   }
 `;
 
@@ -33,15 +34,24 @@ const Header = () => {
     <header>
       <nav>
         <Box>
-          <List>
-            <StyledLink to="/">Home</StyledLink>
-          </List>
-          <List>
-            <StyledLink to="/movies">Movies</StyledLink>
-          </List>
-          <List>
-            <StyledLink to="/shows">Shows</StyledLink>
-          </List>
+          <StyledLink
+            exact to="/"
+            activeClassName="active"
+          >
+            Home
+          </StyledLink>
+          <StyledLink
+            to="/movies"
+            activeClassName="active"
+          >
+            Movies
+          </StyledLink>
+          <StyledLink 
+            to="/shows"
+            activeClassName="active"
+          >
+            Shows
+          </StyledLink>
         </Box>
       </nav>
     </header>
