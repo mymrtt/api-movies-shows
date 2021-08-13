@@ -30,28 +30,33 @@ const StyledLink = styled(NavLink)`
 `;
 
 const Header = () => {
+  const navItems = [
+    {
+      name: 'Home',
+      url: '/'
+    },
+    {
+      name: 'Movies',
+      url: '/movies'
+    },
+    {
+      name: 'Shows',
+      url: '/shows'
+    }
+  ]
+  
   return (
     <header>
       <nav>
         <Box>
+        {navItems.map(({ name, url }) => (
           <StyledLink
-            exact to="/"
+            exact to={url}
             activeClassName="active"
           >
-            Home
+            {name}
           </StyledLink>
-          <StyledLink
-            to="/movies"
-            activeClassName="active"
-          >
-            Movies
-          </StyledLink>
-          <StyledLink 
-            to="/shows"
-            activeClassName="active"
-          >
-            Shows
-          </StyledLink>
+        ))}
         </Box>
       </nav>
     </header>
