@@ -17,16 +17,20 @@ const Movies = () => {
   }, [])
 
   const getMovies = async () => {
-    const response = await getData('movie');
+    try {
+      const response = await getData('movie');
 
-    const completeMovies = response.data.results.map(item => {
-      return {
-        ...item,
-        poster_path: `https://image.tmdb.org/t/p/w400${item.poster_path}`
-      };
-    });
+      const completeMovies = response.data.results.map(item => {
+        return {
+          ...item,
+          poster_path: `https://image.tmdb.org/t/p/w400${item.poster_path}`
+        };
+      });
 
-    setDataList(completeMovies);
+      setDataList(completeMovies);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

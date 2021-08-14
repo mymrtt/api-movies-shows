@@ -17,16 +17,20 @@ const Shows = () => {
   })
 
   const getSeries = async () => {
-    const response = await getData('tv');
+    try {
+      const response = await getData('tv');
 
-    const completeSeries = response.data.results.map(item => {
-      return {
-        ...item,
-        poster_path: `https://image.tmdb.org/t/p/w400${item.poster_path}`
-      };
-    });
+      const completeSeries = response.data.results.map(item => {
+        return {
+          ...item,
+          poster_path: `https://image.tmdb.org/t/p/w400${item.poster_path}`
+        };
+      });
 
-    setDataList(completeSeries);
+      setDataList(completeSeries);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
