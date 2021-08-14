@@ -1,15 +1,12 @@
 // Libs
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 
 // Components
 import Layout from '../components/layout';
 import Template from '../components/template';
 
-const SeriesApi = axios.create({
-  baseURL:
-    'https://api.themoviedb.org/3/tv/popular?api_key=c654685165c467c1f991d6635454599f'
-});
+// Service
+import { getData } from '../services/api';
 
 const Shows = () => {
   const [dataList, setDataList] = useState([]);
@@ -20,7 +17,7 @@ const Shows = () => {
   })
 
   const getSeries = async () => {
-    const response = await SeriesApi.get();
+    const response = await getData('tv');
 
     const completeSeries = response.data.results.map(item => {
       return {
