@@ -26,8 +26,6 @@ const Movies = () => {
       };
     });
 
-    console.log('completeMovies', completeMovies)
-
     setDataList(completeMovies);
   };
 
